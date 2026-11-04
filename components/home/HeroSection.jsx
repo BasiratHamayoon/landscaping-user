@@ -1,3 +1,4 @@
+// components/sections/HeroSection.jsx
 'use client';
 
 import { useRef } from 'react';
@@ -16,21 +17,18 @@ export default function HeroSection() {
         defaults: { ease: 'power3.out' },
       });
 
-      // Soft image zoom on load
       gsap.fromTo(
         '.hero-image',
         { scale: 1.12 },
         { scale: 1, duration: 2.2, ease: 'power2.out' }
       );
 
-      // Gradient panel slide-in
       tl.from('.hero-gradient', {
         x: -80,
         opacity: 0,
         duration: 1,
       });
 
-      // Staggered text reveal
       tl.from(
         '.hero-tag',
         { y: 24, opacity: 0, duration: 0.55 },
@@ -63,7 +61,6 @@ export default function HeroSection() {
           '-=0.35'
         );
 
-      // Gentle floating badge
       gsap.to('.hero-badge', {
         y: -8,
         duration: 2.4,
@@ -99,8 +96,8 @@ export default function HeroSection() {
       {/* Left White Gradient Panel */}
       <div className="hero-gradient absolute inset-y-0 left-0 w-full md:w-[68%] bg-gradient-to-r from-white via-white/95 to-transparent pointer-events-none" />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 w-full">
+      {/* Content - Consistent padding with other sections */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
         <div className="max-w-xl">
           {/* Small badge */}
           <div className="hero-badge inline-flex items-center gap-1.5 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-5 border border-primary/15">

@@ -1,3 +1,4 @@
+// components/sections/ServicesSection.jsx
 'use client';
 
 import { useRef } from 'react';
@@ -10,7 +11,6 @@ import { ArrowRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Data structure based exactly on your screenshots
 const serviceCategories = [
   {
     category: 'Garden Maintenance',
@@ -55,7 +55,6 @@ export default function ServicesSection() {
 
   useGSAP(() => {
     const ctx = gsap.context(() => {
-      // Main section title animation
       gsap.from('.svc-main-title', {
         y: 30,
         opacity: 0,
@@ -67,7 +66,6 @@ export default function ServicesSection() {
         },
       });
 
-      // Animate each category group separately when it scrolls into view
       const groups = gsap.utils.toArray('.svc-group');
       
       groups.forEach((group) => {
@@ -104,9 +102,8 @@ export default function ServicesSection() {
 
   return (
     <section ref={containerRef} className="py-16 md:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         
-        {/* Main Section Header */}
         <div className="text-center mb-16">
           <h2 className="svc-main-title font-serif-elegant text-3xl md:text-5xl font-bold text-darkText mb-3">
             Our Services
@@ -114,12 +111,10 @@ export default function ServicesSection() {
           <div className="svc-main-title w-16 h-1 bg-primary mx-auto rounded-full"></div>
         </div>
 
-        {/* Iterate over Service Categories */}
         <div className="space-y-16 md:space-y-20">
           {serviceCategories.map((group, groupIdx) => (
             <div key={groupIdx} className="svc-group">
               
-              {/* Category Heading (Underlined like screenshots) */}
               <div className="mb-6 flex items-center justify-between">
                 <h3 className="svc-cat-title text-lg md:text-2xl font-bold text-darkText underline underline-offset-8 decoration-primary decoration-2">
                   {group.category}
@@ -132,7 +127,6 @@ export default function ServicesSection() {
                 </Link>
               </div>
 
-              {/* Cards Grid */}
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                 {group.items.map((item, itemIdx) => (
                   <Link
@@ -140,7 +134,6 @@ export default function ServicesSection() {
                     key={itemIdx}
                     className="svc-card group block overflow-hidden"
                   >
-                    {/* Image Container with rounded corners & hover scale */}
                     <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-gray-100 shadow-sm border border-gray-100">
                       <Image
                         src={item.img}
@@ -149,11 +142,9 @@ export default function ServicesSection() {
                         sizes="(max-width: 768px) 50vw, 25vw"
                         className="object-cover group-hover:scale-110 group-hover:rotate-1 transition-all duration-700 ease-out"
                       />
-                      {/* Dark gradient overlay on hover for luxury feel */}
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 z-10" />
                     </div>
 
-                    {/* Content below image */}
                     <div className="pt-4">
                       <h4 className="text-sm md:text-[15px] font-bold text-darkText group-hover:text-primary transition-colors duration-300 leading-tight">
                         {item.title}
@@ -169,7 +160,6 @@ export default function ServicesSection() {
           ))}
         </div>
         
-        {/* Mobile View All Button */}
         <div className="mt-12 text-center sm:hidden">
           <Link
             href="/services"

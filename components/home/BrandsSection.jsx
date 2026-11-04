@@ -1,3 +1,4 @@
+// components/sections/BrandsSection.jsx
 'use client';
 
 import { useRef } from 'react';
@@ -30,7 +31,6 @@ export default function BrandsSection() {
 
   useGSAP(() => {
     const ctx = gsap.context(() => {
-      // 1. Entrance ScrollTrigger Animation for Header
       gsap.from('.brands-header-item', {
         y: 25,
         opacity: 0,
@@ -44,7 +44,6 @@ export default function BrandsSection() {
         },
       });
 
-      // 2. Seamless Infinite Loop Marquee Animation
       const track = trackRef.current;
       if (track) {
         const totalWidth = track.scrollWidth / 2;
@@ -64,7 +63,6 @@ export default function BrandsSection() {
   const pauseMarquee = () => tweenRef.current?.pause();
   const resumeMarquee = () => tweenRef.current?.play();
 
-  // Duplicate brands array for 100% seamless infinite loop
   const loopBrands = [...brands, ...brands];
 
   return (
@@ -79,19 +77,16 @@ export default function BrandsSection() {
       {/* Decorative Top Line Accent */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-[2px] bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-4 mb-10 text-center relative z-10">
-        {/* Category Tag */}
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mb-10 text-center relative z-10">
         <div className="brands-header-item inline-flex items-center gap-1.5 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-[0.2em] px-3.5 py-1.5 rounded-full mb-3 border border-primary/15 shadow-xs">
           <Sparkles size={12} className="text-accent" />
           <span>Prestigious Clientele</span>
         </div>
 
-        {/* Section Heading */}
         <h2 className="brands-header-item font-serif-elegant text-2xl sm:text-3xl md:text-4xl font-bold text-darkText leading-tight">
           Trusted by Leading <span className="text-primary">UAE Organizations</span>
         </h2>
 
-        {/* Subtitle */}
         <p className="brands-header-item text-xs md:text-sm text-gray-500 mt-2.5 max-w-lg mx-auto font-medium leading-relaxed">
           Delivering award-winning landscape design, execution & grounds maintenance for premier hospitality, luxury developers, and municipal spaces across Dubai.
         </p>
@@ -103,11 +98,9 @@ export default function BrandsSection() {
         onMouseEnter={pauseMarquee}
         onMouseLeave={resumeMarquee}
       >
-        {/* Smooth Gradient Edges Mask */}
         <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-32 md:w-48 z-10 bg-gradient-to-r from-white via-white/90 to-transparent" />
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-32 md:w-48 z-10 bg-gradient-to-l from-white via-white/90 to-transparent" />
 
-        {/* Continuous Animated Track */}
         <div
           ref={trackRef}
           className="flex w-max gap-4 sm:gap-6 will-change-transform px-4"
@@ -131,7 +124,6 @@ export default function BrandsSection() {
                 </span>
               </div>
 
-              {/* Glowing Icon Indicator on Hover */}
               <div className="w-8 h-8 rounded-full bg-gray-50 group-hover:bg-primary/10 flex items-center justify-center shrink-0 transition-all duration-300 border border-gray-100 group-hover:border-primary/20">
                 <Building2 size={15} className="text-gray-400 group-hover:text-primary transition-colors duration-300" />
               </div>
@@ -140,8 +132,7 @@ export default function BrandsSection() {
         </div>
       </div>
 
-      {/* Interactive Hint */}
-      <div className="mt-8 flex items-center justify-center gap-2 text-[11px] font-medium text-gray-400 tracking-wide">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mt-8 flex items-center justify-center gap-2 text-[11px] font-medium text-gray-400 tracking-wide text-center">
         <ShieldCheck size={14} className="text-primary" />
         <span>Hover cards to pause continuous scroll · Verified Commercial Partners</span>
       </div>

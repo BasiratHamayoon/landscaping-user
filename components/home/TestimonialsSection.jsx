@@ -1,3 +1,4 @@
+// components/sections/TestimonialsSection.jsx
 'use client';
 
 import { useRef } from 'react';
@@ -61,8 +62,7 @@ export default function TestimonialsSection() {
 
   return (
     <section className="relative py-16 md:py-24 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
-        {/* Header */}
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 md:mb-12">
           <div className="max-w-xl">
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-2">
@@ -77,7 +77,6 @@ export default function TestimonialsSection() {
             </p>
           </div>
 
-          {/* Arrow controls */}
           <div className="flex items-center gap-2 shrink-0">
             <button
               type="button"
@@ -102,7 +101,6 @@ export default function TestimonialsSection() {
           </div>
         </div>
 
-        {/* Cards scroller — no entrance opacity animation */}
         <div
           ref={scrollerRef}
           className="flex gap-5 overflow-x-auto pb-2 scroll-smooth
@@ -118,7 +116,6 @@ export default function TestimonialsSection() {
                          hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)]
                          transition-shadow duration-300"
             >
-              {/* Google-style top row */}
               <div className="flex items-start justify-between gap-3 mb-4">
                 <div className="flex items-center gap-3 min-w-0">
                   <div className="w-10 h-10 rounded-full bg-primary/10 text-primary
@@ -130,7 +127,6 @@ export default function TestimonialsSection() {
                     <p className="text-[11px] text-gray-500 truncate">{t.role}</p>
                   </div>
                 </div>
-                {/* Google G mark */}
                 <span
                   className="shrink-0 w-7 h-7 rounded-full bg-white border border-gray-200
                              flex items-center justify-center text-[13px] font-bold
@@ -141,7 +137,6 @@ export default function TestimonialsSection() {
                 </span>
               </div>
 
-              {/* Stars */}
               <div className="flex items-center gap-0.5 mb-3">
                 {Array.from({ length: t.rating }).map((_, s) => (
                   <Star
@@ -153,12 +148,10 @@ export default function TestimonialsSection() {
                 <span className="ml-2 text-[10px] text-gray-400">{t.date}</span>
               </div>
 
-              {/* Review text */}
               <p className="text-xs text-gray-600 leading-relaxed mb-4">
                 {t.text}
               </p>
 
-              {/* Verified footer */}
               <div className="flex items-center gap-1.5 text-[11px] text-gray-500 pt-3 border-t border-gray-50">
                 <BadgeCheck size={14} className="text-[#4285F4] shrink-0" />
                 <span>Posted on Google · Verified</span>

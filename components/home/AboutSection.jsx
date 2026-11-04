@@ -1,3 +1,4 @@
+// components/sections/AboutSection.jsx
 'use client';
 
 import { useRef } from 'react';
@@ -30,7 +31,6 @@ export default function AboutSection() {
         },
       });
 
-      // Left Image reveal & scale
       tl.from('.about-img-box', {
         x: -50,
         opacity: 0,
@@ -39,53 +39,20 @@ export default function AboutSection() {
       })
         .from(
           '.about-img-inner',
-          {
-            scale: 1.15,
-            duration: 1.2,
-            ease: 'power2.out',
-          },
+          { scale: 1.15, duration: 1.2, ease: 'power2.out' },
           '-=0.9'
         )
-        // Floating badge pop
         .from(
           '.about-stat-card',
-          {
-            scale: 0.7,
-            opacity: 0,
-            y: 20,
-            duration: 0.5,
-            ease: 'back.out(1.7)',
-          },
+          { scale: 0.7, opacity: 0, y: 20, duration: 0.5, ease: 'back.out(1.7)' },
           '-=0.5'
         )
-        // Right side content stagger
-        .from(
-          '.about-tag',
-          { y: 20, opacity: 0, duration: 0.4 },
-          '-=0.4'
-        )
-        .from(
-          '.about-heading',
-          { y: 25, opacity: 0, duration: 0.5 },
-          '-=0.3'
-        )
-        .from(
-          '.about-p',
-          { y: 20, opacity: 0, duration: 0.5, stagger: 0.1 },
-          '-=0.3'
-        )
-        .from(
-          '.about-feature-item',
-          { y: 15, opacity: 0, duration: 0.4, stagger: 0.08 },
-          '-=0.2'
-        )
-        .from(
-          '.about-cta',
-          { y: 20, opacity: 0, duration: 0.4, clearProps: 'all' },
-          '-=0.2'
-        );
+        .from('.about-tag', { y: 20, opacity: 0, duration: 0.4 }, '-=0.4')
+        .from('.about-heading', { y: 25, opacity: 0, duration: 0.5 }, '-=0.3')
+        .from('.about-p', { y: 20, opacity: 0, duration: 0.5, stagger: 0.1 }, '-=0.3')
+        .from('.about-feature-item', { y: 15, opacity: 0, duration: 0.4, stagger: 0.08 }, '-=0.2')
+        .from('.about-cta', { y: 20, opacity: 0, duration: 0.4, clearProps: 'all' }, '-=0.2');
 
-      // Soft continuous float for the stat card
       gsap.to('.about-stat-card', {
         y: -6,
         duration: 2.2,
@@ -103,14 +70,13 @@ export default function AboutSection() {
       ref={containerRef}
       className="relative py-16 md:py-24 bg-gradient-to-b from-gray-50 via-white to-gray-50 overflow-hidden"
     >
-      {/* Soft background glow */}
       <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left Side: Image Showcase with Floating Badge */}
+          {/* Left Side */}
           <div className="lg:col-span-6 relative">
             <div className="about-img-box relative w-full h-[380px] sm:h-[460px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl border border-gray-100">
               <div className="about-img-inner relative w-full h-full">
@@ -126,7 +92,6 @@ export default function AboutSection() {
               </div>
             </div>
 
-            {/* Floating Experience Badge */}
             <div className="about-stat-card absolute -bottom-6 -right-2 sm:right-6 bg-white p-4 sm:p-5 rounded-2xl shadow-xl border border-gray-100 flex items-center gap-4 max-w-[240px]">
               <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
                 <Award size={26} className="text-primary" />
@@ -142,20 +107,17 @@ export default function AboutSection() {
             </div>
           </div>
 
-          {/* Right Side: Copy & Features */}
+          {/* Right Side */}
           <div className="lg:col-span-6">
-            {/* Tag */}
             <div className="about-tag inline-flex items-center gap-1.5 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4 border border-primary/15">
               <Sparkles size={12} className="text-accent" />
               About Royal Plantscape
             </div>
 
-            {/* Heading */}
             <h2 className="about-heading font-serif-elegant text-3xl md:text-4xl lg:text-4xl font-bold text-darkText leading-tight mb-5">
               Best Landscape Designer in <span className="text-primary">Dubai, UAE</span>
             </h2>
 
-            {/* Body Paragraphs */}
             <p className="about-p text-sm text-gray-600 mb-4 leading-relaxed">
               Looking for a trusted landscape designer in Dubai? Royal Plantscape creates elegant,
               climate-smart outdoor spaces for villas, townhouses, hotels, offices, and commercial
@@ -167,7 +129,6 @@ export default function AboutSection() {
               unmatched professional care.
             </p>
 
-            {/* Feature Highlights Grid */}
             <div className="grid sm:grid-cols-2 gap-3 mb-8">
               {features.map((item, idx) => (
                 <div
@@ -180,7 +141,6 @@ export default function AboutSection() {
               ))}
             </div>
 
-            {/* CTAs */}
             <div className="about-cta flex flex-wrap items-center gap-4">
               <Link
                 href="/contact"
@@ -201,9 +161,7 @@ export default function AboutSection() {
                 <ArrowRight size={14} />
               </Link>
             </div>
-
           </div>
-
         </div>
       </div>
     </section>
