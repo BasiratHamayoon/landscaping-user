@@ -1,4 +1,3 @@
-// components/sections/ServicesSection.jsx
 'use client';
 
 import { useRef } from 'react';
@@ -102,7 +101,7 @@ export default function ServicesSection() {
 
   return (
     <section ref={containerRef} className="py-16 md:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="px-8 sm:px-12 lg:px-20 xl:px-28">
         
         <div className="text-center mb-16">
           <h2 className="svc-main-title font-serif-elegant text-3xl md:text-5xl font-bold text-darkText mb-3">

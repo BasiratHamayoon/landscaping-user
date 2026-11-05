@@ -8,10 +8,9 @@ import { FaFacebookF, FaInstagram } from 'react-icons/fa6';
 export default function Footer() {
   return (
     <footer className="bg-gray-100 text-gray-700 pt-16 pb-6 border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="px-8 sm:px-12 lg:px-20 xl:px-28">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           
-          {/* Shop Column */}
           <div>
             <h4 className="text-darkText text-xs font-bold tracking-widest-xl mb-6 uppercase">SHOP</h4>
             <ul className="space-y-3 text-xs font-medium">
@@ -23,7 +22,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h4 className="text-darkText text-xs font-bold tracking-widest-xl mb-6 uppercase">QUICK LINKS</h4>
             <ul className="space-y-3 text-xs font-medium">
@@ -34,7 +32,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact Us */}
           <div>
             <h4 className="text-darkText text-xs font-bold tracking-widest-xl mb-6 uppercase">CONTACT US</h4>
             <ul className="space-y-3 text-xs font-medium">
@@ -56,7 +53,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Exclusive Benefits */}
           <div>
             <h4 className="text-darkText text-xs font-bold tracking-widest-xl mb-6 uppercase">NEWSLETTER</h4>
             <form onSubmit={(e) => e.preventDefault()} className="relative mb-4">
@@ -84,7 +80,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
         <div className="border-t border-gray-300 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium">
           <p>© {new Date().getFullYear()}, Royal Plantscape. All rights reserved.</p>
         </div>

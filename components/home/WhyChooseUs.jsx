@@ -1,4 +1,3 @@
-// components/sections/WhyChooseUs.jsx
 'use client';
 
 import {
@@ -48,7 +47,7 @@ export default function WhyChooseUs() {
       <div className="absolute top-20 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 right-0 w-80 h-80 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+      <div className="px-8 sm:px-12 lg:px-20 xl:px-28 relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-12 md:mb-14">
           <div className="inline-flex items-center gap-1.5 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-[0.2em] px-3.5 py-1.5 rounded-full mb-4 border border-primary/20">
             <Sparkles size={12} className="text-amber-500" />

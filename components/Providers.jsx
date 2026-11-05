@@ -1,9 +1,10 @@
 'use client';
 
 import { Provider } from 'react-redux';
-import { store } from '@/lib/store';
+import { store } from '@/redux/store';
 import { useEffect, useState } from 'react';
 import Loader from './layout/Loader';
+import CartDrawer from './CartDrawer';
 
 export default function Providers({ children }) {
   const [loading, setLoading] = useState(true);
@@ -17,6 +18,7 @@ export default function Providers({ children }) {
     <Provider store={store}>
       {loading && <Loader />}
       {children}
+      <CartDrawer />
     </Provider>
   );
 }

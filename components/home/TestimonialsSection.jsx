@@ -1,4 +1,3 @@
-// components/sections/TestimonialsSection.jsx
 'use client';
 
 import { useRef } from 'react';
@@ -51,7 +50,7 @@ export default function TestimonialsSection() {
     if (!el) return;
 
     const card = el.querySelector('.testimonial-card');
-    const amount = card ? card.offsetWidth + 20 : 320;
+    const amount = card ? card.offsetWidth + 20 : 280;
 
     gsap.to(el, {
       scrollLeft: el.scrollLeft + direction * amount,
@@ -62,7 +61,7 @@ export default function TestimonialsSection() {
 
   return (
     <section className="relative py-16 md:py-24 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+      <div className="px-8 sm:px-12 lg:px-20 xl:px-28 relative z-10">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10 md:mb-12">
           <div className="max-w-xl">
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-2">
@@ -110,26 +109,27 @@ export default function TestimonialsSection() {
           {testimonials.map((t, i) => (
             <article
               key={i}
-              className="testimonial-card shrink-0 w-[min(100%,320px)] md:w-[340px]
-                         bg-white border border-gray-100 rounded-2xl p-6
-                         shadow-[0_4px_24px_rgba(0,0,0,0.04)]
-                         hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)]
-                         transition-shadow duration-300"
+              className="testimonial-card shrink-0 w-[min(100%,280px)] md:w-[300px]
+                         bg-gray-900 border border-gray-800 rounded-2xl p-5
+                         shadow-[0_4px_24px_rgba(0,0,0,0.15)]
+                         hover:shadow-[0_12px_32px_rgba(0,0,0,0.3)]
+                         hover:border-gray-700
+                         transition-all duration-300"
             >
-              <div className="flex items-start justify-between gap-3 mb-4">
-                <div className="flex items-center gap-3 min-w-0">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 text-primary
-                                  flex items-center justify-center text-sm font-bold shrink-0">
+              <div className="flex items-start justify-between gap-3 mb-3">
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <div className="w-9 h-9 rounded-full bg-white/10 text-white
+                                  flex items-center justify-center text-xs font-bold shrink-0">
                     {t.name.charAt(0)}
                   </div>
                   <div className="min-w-0">
-                    <p className="text-sm font-bold text-gray-900 truncate">{t.name}</p>
-                    <p className="text-[11px] text-gray-500 truncate">{t.role}</p>
+                    <p className="text-[13px] font-bold text-white truncate">{t.name}</p>
+                    <p className="text-[10px] text-gray-400 truncate">{t.role}</p>
                   </div>
                 </div>
                 <span
-                  className="shrink-0 w-7 h-7 rounded-full bg-white border border-gray-200
-                             flex items-center justify-center text-[13px] font-bold
+                  className="shrink-0 w-6 h-6 rounded-full bg-gray-800 border border-gray-700
+                             flex items-center justify-center text-[11px] font-bold
                              text-[#4285F4] shadow-sm"
                   title="Google review"
                 >
@@ -137,23 +137,23 @@ export default function TestimonialsSection() {
                 </span>
               </div>
 
-              <div className="flex items-center gap-0.5 mb-3">
+              <div className="flex items-center gap-0.5 mb-2.5">
                 {Array.from({ length: t.rating }).map((_, s) => (
                   <Star
                     key={s}
-                    size={14}
+                    size={12}
                     className="fill-[#FBBC04] text-[#FBBC04]"
                   />
                 ))}
-                <span className="ml-2 text-[10px] text-gray-400">{t.date}</span>
+                <span className="ml-1.5 text-[9px] text-gray-500">{t.date}</span>
               </div>
 
-              <p className="text-xs text-gray-600 leading-relaxed mb-4">
+              <p className="text-[11px] text-gray-300 leading-relaxed mb-3">
                 {t.text}
               </p>
 
-              <div className="flex items-center gap-1.5 text-[11px] text-gray-500 pt-3 border-t border-gray-50">
-                <BadgeCheck size={14} className="text-[#4285F4] shrink-0" />
+              <div className="flex items-center gap-1.5 text-[10px] text-gray-400 pt-2.5 border-t border-gray-800">
+                <BadgeCheck size={12} className="text-[#4285F4] shrink-0" />
                 <span>Posted on Google · Verified</span>
               </div>
             </article>

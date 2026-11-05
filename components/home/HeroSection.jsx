@@ -1,4 +1,3 @@
-// components/sections/HeroSection.jsx
 'use client';
 
 import { useRef } from 'react';
@@ -76,9 +75,8 @@ export default function HeroSection() {
   return (
     <section
       ref={container}
-      className="relative w-full h-[560px] md:h-[680px] flex items-center overflow-hidden bg-white"
+      className="relative w-full h-[480px] md:h-[580px] flex items-center overflow-hidden bg-white"
     >
-      {/* Full Background Image */}
       <div className="absolute inset-0 hero-image will-change-transform">
         <Image
           src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=1800&q=85"
@@ -90,16 +88,12 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* Soft dark edge on right for depth */}
       <div className="absolute inset-0 bg-gradient-to-l from-black/25 via-transparent to-transparent pointer-events-none" />
 
-      {/* Left White Gradient Panel */}
       <div className="hero-gradient absolute inset-y-0 left-0 w-full md:w-[68%] bg-gradient-to-r from-white via-white/95 to-transparent pointer-events-none" />
 
-      {/* Content - Consistent padding with other sections */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
+      <div className="relative z-10 px-8 sm:px-12 lg:px-20 xl:px-28 w-full">
         <div className="max-w-xl">
-          {/* Small badge */}
           <div className="hero-badge inline-flex items-center gap-1.5 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-5 border border-primary/15">
             <Sparkles size={12} className="text-accent" />
             Dubai&apos;s Trusted Landscape Partner
@@ -123,7 +117,6 @@ export default function HeroSection() {
             properties across Dubai.
           </p>
 
-          {/* CTA Buttons */}
           <div className="flex flex-wrap items-center gap-3">
             <Link
               href="/contact"
@@ -156,7 +149,6 @@ export default function HeroSection() {
             </Link>
           </div>
 
-          {/* Mini trust row */}
           <div className="hero-btn mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] text-gray-500 font-medium">
             <span className="flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-primary" />

@@ -1,4 +1,3 @@
-// components/sections/AboutSection.jsx
 'use client';
 
 import { useRef } from 'react';
@@ -73,12 +72,11 @@ export default function AboutSection() {
       <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
+      <div className="px-8 sm:px-12 lg:px-20 xl:px-28 relative z-10">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left Side */}
           <div className="lg:col-span-6 relative">
-            <div className="about-img-box relative w-full h-[380px] sm:h-[460px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl border border-gray-100">
+            <div className="about-img-box relative w-full h-[300px] sm:h-[360px] md:h-[400px] rounded-2xl overflow-hidden shadow-2xl border border-gray-100">
               <div className="about-img-inner relative w-full h-full">
                 <Image
                   src="https://images.unsplash.com/photo-1558904541-efa843a96f01?w=1200&q=85"
@@ -107,7 +105,6 @@ export default function AboutSection() {
             </div>
           </div>
 
-          {/* Right Side */}
           <div className="lg:col-span-6">
             <div className="about-tag inline-flex items-center gap-1.5 bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4 border border-primary/15">
               <Sparkles size={12} className="text-accent" />
