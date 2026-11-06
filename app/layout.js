@@ -5,29 +5,15 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-poppins',
-  display: 'swap',
-});
+const poppins = Poppins({ subsets: ['latin'], weight: ['300','400','500','600','700'], variable: '--font-poppins', display: 'swap' });
+const playfair = Playfair_Display({ subsets: ['latin'], weight: ['400','500','600','700'], variable: '--font-playfair', display: 'swap' });
 
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-playfair',
-  display: 'swap',
-});
-
-export const metadata = {
-  title: 'Royal Plantscape | Landscape & Gardening Works LLC - Dubai, UAE',
-  description: 'Transform Your Outdoor Space - Landscape Design & Maintenance in Dubai, UAE',
-};
+export const metadata = { title: 'Royal Plantscape | Landscape & Gardening Works LLC - Dubai, UAE', description: 'Premium landscaping and gardening services in Dubai, UAE.' };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${poppins.variable} ${playfair.variable}`}>
-      <body>
+      <body suppressHydrationWarning>
         <Providers>
           <Navbar />
           <main className="min-h-screen">{children}</main>

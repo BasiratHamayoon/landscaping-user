@@ -8,7 +8,6 @@ import {
   Truck,
   Mail,
   Search,
-  User,
   ShoppingCart,
   Menu,
   X,
@@ -21,8 +20,13 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCartCount, showCart } from '@/redux/actions/cartActions';
 import { navMenus } from '@/lib/navData';
+import SearchModal from '@/components/SearchModal';
 
-const toSlug = (text) => text.toLowerCase().replace(/\s+/g, '-');
+const toSlug = (text) =>
+  text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -33,6 +37,7 @@ export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [activeCategory, setActiveCategory] = useState(null);
   const [mobileSubmenu, setMobileSubmenu] = useState(null);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const productsMenu = navMenus.products;
   const servicesMenu = navMenus.services;
@@ -56,7 +61,8 @@ export default function Navbar() {
     setActiveCategory(null);
   };
 
-  const isActive = (href) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
+  const isActive = (href) =>
+    href === '/' ? pathname === '/' : pathname.startsWith(href);
 
   const navLinkClass = (active) =>
     `block px-3 py-2 text-[13px] font-medium tracking-wide transition-colors ${
@@ -94,7 +100,12 @@ export default function Navbar() {
                     }`}
                   >
                     <span>{cat.name}</span>
-                    {hasSub && <ChevronRight size={14} className="text-gray-400 flex-shrink-0" />}
+                    {hasSub && (
+                      <ChevronRight
+                        size={14}
+                        className="text-gray-400 flex-shrink-0"
+                      />
+                    )}
                   </Link>
 
                   {hasSub && activeCategory === cat.slug && (
@@ -124,16 +135,23 @@ export default function Navbar() {
   const renderMobileCategoryMenu = (menu, key, basePath) => (
     <div className="border-b border-gray-100">
       <div className="flex items-center">
-        <Link href={menu.href} className="flex-1 py-3 text-sm font-medium text-darkText">
+        <Link
+          href={menu.href}
+          className="flex-1 py-3 text-sm font-medium text-darkText"
+        >
           {menu.label}
         </Link>
         <button
-          onClick={() => setMobileSubmenu(mobileSubmenu === key ? null : key)}
+          onClick={() =>
+            setMobileSubmenu(mobileSubmenu === key ? null : key)
+          }
           className="p-3"
         >
           <ChevronDown
             size={16}
-            className={`transition-transform ${mobileSubmenu === key ? 'rotate-180' : ''}`}
+            className={`transition-transform ${
+              mobileSubmenu === key ? 'rotate-180' : ''
+            }`}
           />
         </button>
       </div>
@@ -172,7 +190,10 @@ export default function Navbar() {
       <div className="bg-primary text-white text-xs py-1.5 px-8 sm:px-12 lg:px-20 xl:px-28">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4 sm:gap-6">
-            <a href="tel:+971501234567" className="flex items-center gap-1.5 hover:text-white/80 transition-colors">
+            <a
+              href="tel:+971501234567"
+              className="flex items-center gap-1.5 hover:text-white/80 transition-colors"
+            >
               <Phone size={11} />
               <span className="hidden sm:inline">+971 50 123 4567</span>
             </a>
@@ -181,7 +202,10 @@ export default function Navbar() {
               Free Delivery on Orders Above AED 200
             </span>
           </div>
-          <a href="mailto:info@royalplantscape.ae" className="flex items-center gap-1.5 hover:text-white/80 transition-colors">
+          <a
+            href="mailto:info@royalplantscape.ae"
+            className="flex items-center gap-1.5 hover:text-white/80 transition-colors"
+          >
             <Mail size={11} />
             <span className="hidden sm:inline">info@royalplantscape.ae</span>
           </a>
@@ -224,7 +248,10 @@ export default function Navbar() {
               onMouseEnter={() => setActiveDropdown('areas')}
               onMouseLeave={closeDropdown}
             >
-              <Link href={areasMenu.href} className={navLinkClass(isActive(areasMenu.href))}>
+              <Link
+                href={areasMenu.href}
+                className={navLinkClass(isActive(areasMenu.href))}
+              >
                 {areasMenu.label}
               </Link>
 
@@ -243,7 +270,10 @@ export default function Navbar() {
                           href={`/area-we-serve/${toSlug(area)}`}
                           className="flex items-center gap-2 px-3 py-2 rounded-lg text-[13px] text-darkText whitespace-nowrap hover:bg-primary/5 hover:text-primary transition-colors"
                         >
-                          <MapPin size={12} className="text-primary flex-shrink-0" />
+                          <MapPin
+                            size={12}
+                            className="text-primary flex-shrink-0"
+                          />
                           {area}
                         </Link>
                       ))}
@@ -260,17 +290,20 @@ export default function Navbar() {
               )}
             </div>
 
-            <Link href="/contact" className={navLinkClass(isActive('/contact'))}>
+            <Link
+              href="/contact"
+              className={navLinkClass(isActive('/contact'))}
+            >
               CONTACT US
             </Link>
           </div>
 
           <div className="flex items-center gap-2">
-            <button className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors text-darkText">
+            <button
+              onClick={() => setSearchOpen(true)}
+              className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors text-darkText"
+            >
               <Search size={18} />
-            </button>
-            <button className="w-9 h-9 items-center justify-center rounded-full hover:bg-gray-100 transition-colors text-darkText hidden sm:flex">
-              <User size={18} />
             </button>
             <button
               onClick={() => dispatch(showCart())}
@@ -296,7 +329,10 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="lg:hidden fixed inset-0 top-[104px] bg-white z-[998] overflow-y-auto">
           <div className="px-6 py-4 space-y-1">
-            <Link href="/" className="block py-3 text-sm font-medium text-darkText border-b border-gray-100">
+            <Link
+              href="/"
+              className="block py-3 text-sm font-medium text-darkText border-b border-gray-100"
+            >
               HOME
             </Link>
 
@@ -305,16 +341,25 @@ export default function Navbar() {
 
             <div className="border-b border-gray-100">
               <div className="flex items-center">
-                <Link href={areasMenu.href} className="flex-1 py-3 text-sm font-medium text-darkText">
+                <Link
+                  href={areasMenu.href}
+                  className="flex-1 py-3 text-sm font-medium text-darkText"
+                >
                   {areasMenu.label}
                 </Link>
                 <button
-                  onClick={() => setMobileSubmenu(mobileSubmenu === 'areas' ? null : 'areas')}
+                  onClick={() =>
+                    setMobileSubmenu(
+                      mobileSubmenu === 'areas' ? null : 'areas'
+                    )
+                  }
                   className="p-3"
                 >
                   <ChevronDown
                     size={16}
-                    className={`transition-transform ${mobileSubmenu === 'areas' ? 'rotate-180' : ''}`}
+                    className={`transition-transform ${
+                      mobileSubmenu === 'areas' ? 'rotate-180' : ''
+                    }`}
                   />
                 </button>
               </div>
@@ -326,7 +371,10 @@ export default function Navbar() {
                       href={`/area-we-serve/${toSlug(area)}`}
                       className="flex items-center gap-1.5 py-2 text-xs text-gray-600 hover:text-primary"
                     >
-                      <MapPin size={11} className="text-primary flex-shrink-0" />
+                      <MapPin
+                        size={11}
+                        className="text-primary flex-shrink-0"
+                      />
                       {area}
                     </Link>
                   ))}
@@ -334,12 +382,17 @@ export default function Navbar() {
               )}
             </div>
 
-            <Link href="/contact" className="block py-3 text-sm font-medium text-darkText border-b border-gray-100">
+            <Link
+              href="/contact"
+              className="block py-3 text-sm font-medium text-darkText border-b border-gray-100"
+            >
               CONTACT US
             </Link>
           </div>
         </div>
       )}
+
+      <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   );
 }

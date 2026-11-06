@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { FaFacebookF, FaInstagram } from 'react-icons/fa6';
 
@@ -10,11 +9,10 @@ export default function Footer() {
     <footer className="bg-gray-100 text-gray-700 pt-16 pb-6 border-t border-gray-200">
       <div className="px-8 sm:px-12 lg:px-20 xl:px-28">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          
           <div>
             <h4 className="text-darkText text-xs font-bold tracking-widest-xl mb-6 uppercase">SHOP</h4>
             <ul className="space-y-3 text-xs font-medium">
-              <li><Link href="/Home" className="hover:text-primary transition">Home</Link></li>
+              <li><Link href="/" className="hover:text-primary transition">Home</Link></li>
               <li><Link href="/products" className="hover:text-primary transition">Products</Link></li>
               <li><Link href="/services" className="hover:text-primary transition">Our Service</Link></li>
               <li><Link href="/about" className="hover:text-primary transition">About Us</Link></li>
@@ -81,7 +79,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-300 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium">
-          <p>© {new Date().getFullYear()}, Royal Plantscape. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()}, Royal Plantscape. All rights reserved.</p>
         </div>
       </div>
     </footer>
